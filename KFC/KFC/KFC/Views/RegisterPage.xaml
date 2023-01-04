@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:KFC.ViewModels"
+    x:Class="KFC.RegisterPage"
+    BackgroundColor="Black">
+    
+    <ContentPage.BindingContext>
+        <local:RegisterPageViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Register Form:" VerticalOptions="Center" FontSize="Title" TextColor="White" BackgroundColor="Black"
+                   Margin="30,30,0,0"/>
+            <Frame CornerRadius="5" BackgroundColor="Black" BorderColor="DarkOrange" Margin="5,10,5,5">
+                <FlexLayout>
+
+                    <Label Text="Name: " FontSize="Medium" TextColor="White" BackgroundColor="Black" VerticalTextAlignment="Center"/>
+
+                    <Entry Text="{Binding Name}" Placeholder="ex:John" IsSpellCheckEnabled="False"
+                         BackgroundColor="Black" TextColor="White" FlexLayout.Grow="1" Keyboard="Default"/>
+
+                    <Button Text="Clear" Command="{Binding ClearNameButtonCommand}"
+                    CornerRadius="20" BackgroundColor="Black" TextColor="DarkOrange" FlexLayout.AlignSelf="End"/>
+                </FlexLayout>
+            </Frame>
+            <Frame CornerRadius="5" BackgroundColor="Black" BorderColor="DarkOrange" Margin="5">
+                <FlexLayout>
+
+                    <Label Text="Surname: " FontSize="Medium" TextColor="White" BackgroundColor="Black" VerticalTextAlignment="Center"/>
+
+                    <Entry Text="{Binding Surname}" Placeholder="ex:Snow" IsSpellCheckEnabled="False"
+                         BackgroundColor="Black" TextColor="White" FlexLayout.Grow="1" Keyboard="Default" />
+
+                    <Button Text="Clear" Command="{Binding ClearSurnameButtonCommand}"
+                    CornerRadius="20" BackgroundColor="Black" TextColor="DarkOrange" FlexLayout.AlignSelf="End"/>
+                </FlexLayout>
+            </Frame>
+
+            <Frame CornerRadius="5" BackgroundColor="Black" BorderColor="DarkOrange" Margin="5">
+                <FlexLayout>
+
+                    <Label Text="Email: " FontSize="Medium" TextColor="White" BackgroundColor="Black" VerticalTextAlignment="Center"/>
+
+                    <Entry Text="{Binding Email}" Placeholder="{Binding EmailPlaceholder}" IsSpellCheckEnabled="False"
+                         BackgroundColor="Black" TextColor="White" FlexLayout.Grow="1" PlaceholderColor="Gray" Keyboard="Email"/>
+
+                    <Button Text="Clear" Command="{Binding ClearEmailButtonCommand}"
+                    CornerRadius="20" BackgroundColor="Black" TextColor="DarkOrange" FlexLayout.AlignSelf="End"/>
+                </FlexLayout>
+            </Frame>
+
+            <Frame CornerRadius="5" BackgroundColor="Black" BorderColor="DarkOrange" Margin="5">
+                <FlexLayout>
+
+                    <Label Text="Username: " FontSize="Medium" TextColor="White" BackgroundColor="Black" VerticalTextAlignment="Center"/>
+
+                    <Entry Text="{Binding UsernameRegister}" Placeholder="{Binding UsernameRegisterPlaceholder}" IsSpellCheckEnabled="False"
+                         BackgroundColor="Black" TextColor="White" FlexLayout.Grow="1" Keyboard="Plain" />
+
+                    <Button Text="Clear" Command="{Binding ClearUsernameButtonCommand}"
+                    CornerRadius="20" BackgroundColor="Black" TextColor="DarkOrange" FlexLayout.AlignSelf="End"/>
+                </FlexLayout>
+            </Frame>
+
+            <Frame CornerRadius="5" BackgroundColor="Black" BorderColor="DarkOrange" Margin="5">
+                <FlexLayout JustifyContent="SpaceBetween">
+                    
+                    <Label Text="Password: " FontSize="Medium" TextColor="White" BackgroundColor="Black" VerticalTextAlignment="Center"/>
+
+                    <Entry Text="{Binding PassRegister}" Placeholder="{Binding PassRegisterPlaceholder}" IsSpellCheckEnabled="False"
+                         BackgroundColor="Black" TextColor="White" FlexLayout.Grow="1" Keyboard="Plain"/>
+
+                    <Button Text="Clear" Command="{Binding ClearPasswordButtonCommand}"
+                    CornerRadius="20" BackgroundColor="Black"  Margin="20,0,0,0" TextColor="DarkOrange" FlexLayout.AlignSelf="End"  />
+                </FlexLayout>
+            </Frame>
+            
+            <Frame Padding="10,5" Margin="20" BackgroundColor="DarkOrange" CornerRadius="20" HorizontalOptions="Center">
+                <StackLayout BackgroundColor="DarkOrange" Orientation="Horizontal">
+                    <RadioButton IsChecked="{Binding IsCustomerChecked}" Content="Customer" Value="False" TextColor="White" BackgroundColor="DarkOrange"/>
+                    <RadioButton IsChecked="{Binding IsChefChecked}" Content="Chef" Value="True" TextColor="White" BackgroundColor="DarkOrange"/>
+                </StackLayout>
+            </Frame>
+            
+            <Button Text="Register Account" Command="{Binding RegisterAccountButtonCommand}"
+                    CornerRadius="20" BackgroundColor="DarkOrange" TextColor="White"/>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
+

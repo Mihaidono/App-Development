@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:KFC.ViewModels;assembly=KFC"
+             x:Class="KFC.MainMenuPage" BackgroundColor="Black">
+    <ContentPage.BindingContext>
+        <local:MainMenuViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <CarouselView PeekAreaInsets="40" CurrentItem="{Binding CurrentTappedMenuFl}" Grid.Row="0" ItemsSource="{Binding OnSaleMenus}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NavigateToTappedMenuFl,
+                                    Source={RelativeSource AncestorType={x:Type local:MainMenuViewModel}}}"/>
+                                </StackLayout.GestureRecognizers>
+                                <Frame HasShadow="True"
+                                       BorderColor="DarkGray"
+                                       CornerRadius="10"
+                                       Margin="10,5"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="CenterAndExpand"
+                                       BackgroundColor="DarkOrange">
+                                    <StackLayout>
+                                        <FlexLayout JustifyContent="Center">
+                                            <StackLayout>
+                                                <Label Text="{Binding Name}"
+                                                       FontAttributes="Bold"
+                                                       FontSize="Large"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center" />
+                                        
+                                                <Label Text="{Binding GetPriceDescription}"
+                                                       HorizontalOptions="Center" />
+
+                                            </StackLayout>
+                                            <Image Source="{Binding ImageSource}"
+                                                   Aspect="AspectFill"
+                                                   HeightRequest="150"
+                                                   WidthRequest="150"
+                                                   HorizontalOptions="Center" />
+                                        </FlexLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                
+                <StackLayout Grid.Row="1" Padding="0" BackgroundColor="Black">
+                    <Label Text=" ↑Check these delicious burgers on sale! ↑" HorizontalTextAlignment="Center" TextColor="White" Padding="0" Margin="0"/>
+                    <BoxView  HorizontalOptions="FillAndExpand" HeightRequest="2" WidthRequest="1" Color="DarkOrange"/>
+                </StackLayout>
+                
+                <CarouselView Grid.Row="2" CurrentItem="{Binding CurrentTappedMenuSl}" PeekAreaInsets="40" ItemsSource="{Binding MyBurgerList}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Frame HasShadow="True"
+                                       BorderColor="DarkGray"
+                                       CornerRadius="10"
+                                       Margin="10,5"
+                                       WidthRequest="500"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="CenterAndExpand"
+                                       BackgroundColor="DarkOrange">
+                                    <StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding NavigateToTappedMenuSl,
+                                            Source={RelativeSource AncestorType={x:Type local:MainMenuViewModel}}}"/>
+                                        </StackLayout.GestureRecognizers>
+                                        <FlexLayout JustifyContent="Center">
+                                            <StackLayout>
+                                                <Label Text="{Binding Name}"
+                                                       FontAttributes="Bold"
+                                                       FontSize="Large"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center" />
+                                                <Label Text="{Binding GetPriceDescription}"
+                                                       HorizontalOptions="Center" />
+                                            </StackLayout>
+                                            <Image Source="{Binding ImageSource}"
+                                                   Aspect="AspectFill"
+                                                   HeightRequest="150"
+                                                   WidthRequest="150"
+                                                   HorizontalOptions="Center" />
+                                        </FlexLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                
+                <StackLayout Grid.Row="3" Padding="0" BackgroundColor="Black">
+                    <Label Text="↑ Check out our whole catalogue of burgers! ↑" HorizontalTextAlignment="Center" TextColor="White" Padding="0" Margin="0"/>
+                    <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" WidthRequest="1" Color="DarkOrange"/>
+                    <Frame Padding="10" Margin="30,0,30,0" BorderColor="Black" CornerRadius="20" BackgroundColor="DarkOrange" HasShadow="False">
+                        <Label TextColor="White" Text="Most wanted burgers!" HorizontalTextAlignment="Center" />
+                    </Frame>
+                </StackLayout>
+                
+                <Frame Grid.Row="4" BackgroundColor="DarkOrange" CornerRadius="10" Margin="20,0">
+                    <ListView SelectedItem="{Binding CurrentTappedMenuTl , Mode=TwoWay}" BackgroundColor="DarkOrange" ItemsSource="{Binding MostWantedBurgers}" SeparatorColor="Black"
+                              HasUnevenRows="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <FlexLayout JustifyContent="Center" Margin="10">
+                                        <StackLayout>
+                                            <Label Text="{Binding Name}"
+                                                   FontAttributes="Bold"
+                                                   FontSize="Large"
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center" />
+                                            <Label Text="{Binding GetPriceDescription}"
+                                                   HorizontalOptions="Center" />
+                                        </StackLayout>
+                                        <Image Source="{Binding ImageSource}"
+                                               Aspect="AspectFill"
+                                               HeightRequest="150"
+                                               WidthRequest="150"
+                                               HorizontalOptions="Center" />
+                                    </FlexLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Frame>
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>

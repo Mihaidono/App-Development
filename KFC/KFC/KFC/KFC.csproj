@@ -1,0 +1,75 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DebugType>pdbonly</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Text.Json" Version="7.0.0-preview.7.22375.6" />
+        <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.4" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\AccountInformationPage.xaml.cs">
+        <DependentUpon>AccountInformationPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\App.xaml.cs">
+        <DependentUpon>App.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\BurgerDetailPage.xaml.cs">
+        <DependentUpon>BurgerDetailPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\ContactPage.xaml.cs">
+        <DependentUpon>ContactPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\CreateBurgerPage.xaml.cs">
+        <DependentUpon>CreateBurgerPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\FlyoutMenuPage.xaml.cs">
+        <DependentUpon>FlyoutMenuPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\FlyoutPanePage.xaml.cs">
+        <DependentUpon>FlyoutPanePage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\MainMenuPage.xaml.cs">
+        <DependentUpon>MainMenuPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\MainPage.xaml.cs">
+        <DependentUpon>MainPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\MyBurgersPage.xaml.cs">
+        <DependentUpon>MyBurgersPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\RegisterPage.xaml.cs">
+        <DependentUpon>RegisterPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="JsonDatabase\current_user_info.json" />
+      <EmbeddedResource Include="JsonDatabase\current_user_info.json" />
+      <None Remove="JsonDatabase\list_of_accounts.json" />
+      <EmbeddedResource Include="JsonDatabase\list_of_accounts.json" />
+      <None Remove="JsonDatabase\list_of_burger_menus.json" />
+      <EmbeddedResource Include="JsonDatabase\list_of_burger_menus.json" />
+      <None Remove="JsonDatabase\list_of_tickets.json" />
+      <EmbeddedResource Include="JsonDatabase\list_of_tickets.json" />
+    </ItemGroup>
+</Project>

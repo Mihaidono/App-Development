@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:KFC.ViewModels;assembly=KFC"
+             x:Class="KFC.BurgerDetailPage">
+    
+    <ContentPage.BindingContext>
+        <local:BurgerDetailPageViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="DarkOrange">
+            <Frame CornerRadius="10" Margin="40,20,40,10" BackgroundColor="DarkOrange" IsClippedToBounds="True" Padding="0">
+                <Image Source="{Binding BurgerImageSource}" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Frame>
+            <Label Text="ON SALE!" IsVisible="{Binding BurgerVisibility}"
+                   TextColor="White" HorizontalOptions="Center" TextDecorations="Underline"/>
+            <Label Text="{Binding BurgerName}" FontSize="Title" TextColor="Black" HorizontalOptions="CenterAndExpand"/>
+            
+            <Label Text="{Binding BurgerDisplayString}" 
+                   HorizontalOptions="Center" Margin="10,20,10,20" TextColor="White" />
+                
+            <Button Text="Buy" Command="{Binding BuyBurgerButtonCommand}" TextColor="White" BorderColor="Black" BorderWidth="1" CornerRadius="10" Margin="10"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

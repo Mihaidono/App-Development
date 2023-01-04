@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:KFC.ViewModels;assembly=KFC"
+             x:Class="KFC.FlyoutMenuPage"
+             Title="Menu">
+    <ContentPage.BindingContext>
+        <local:FlyoutMenuViewModel/>
+    </ContentPage.BindingContext>
+    
+    <StackLayout  BackgroundColor="DarkOrange">
+        <ImageButton Margin="0,60,0,0" Source="icon" Command="{Binding GoToProfileCommand}"
+                     BackgroundColor="DarkOrange" VerticalOptions="Center"/>
+            <ListView HasUnevenRows="True" BackgroundColor="DarkOrange" SelectedItem="{Binding SelectedMenu , Mode=TwoWay}" 
+                      SeparatorVisibility="None" ItemsSource="{Binding FlyoutItems}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <FlexLayout JustifyContent="Start" Margin="10">
+                            <Image Source="{Binding IconSource}" Margin="0,0,20,0"/>
+                            <Label FontSize="Large" Text="{Binding Title}" VerticalTextAlignment="Center"/>
+                        </FlexLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:KFC.ViewModels;assembly=KFC"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="KFC.MyBurgersPage" BackgroundColor="Black">
+    <ContentPage.BindingContext>
+        <local:MyBurgersPageViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+            <StackLayout>
+                <Frame CornerRadius="10" Margin="10,10,10,0" BackgroundColor="DarkOrange" Padding="0" IsClippedToBounds="True" >
+                    <SearchBar Text="{Binding SearchBarText}" Keyboard="Plain"
+                               TextColor="White" Placeholder="Search Burgers" PlaceholderColor="LightGray" BackgroundColor="DarkOrange">
+                        <SearchBar.Behaviors>
+                            <xct:EventToCommandBehavior EventName="TextChanged" Command="{Binding PerformSearchCommand}"/>
+                        </SearchBar.Behaviors>
+                    </SearchBar>
+                </Frame>
+                
+                <Frame Padding="0" Margin="10,0,10,10" CornerRadius="20" IsClippedToBounds="True" BackgroundColor="Black" >
+                    <ListView IsVisible="{Binding SearchListVisibility}" SelectedItem="{Binding SelectedBurgerMenu, Mode=TwoWay}"
+                              HasUnevenRows="True" BackgroundColor="DarkOrange" ItemsSource="{Binding SearchResults}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Label Text="{Binding Name}"
+                                               FontAttributes="Bold"
+                                               FontSize="Large"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+                                        <Image Source="{Binding ImageSource}"
+                                               Aspect="AspectFill"
+                                               HeightRequest="150"
+                                               WidthRequest="150"
+                                               HorizontalOptions="Center" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Frame>
+                
+                <CarouselView CurrentItem="{Binding CurrentTappedBurgerHigh}" PeekAreaInsets="40" Grid.Row="0" ItemsSource="{Binding MyBurgerList}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NavigateToDetailPage,
+                                    Source={RelativeSource AncestorType={x:Type local:MyBurgersPageViewModel}}}"/>
+                                </StackLayout.GestureRecognizers>
+                                <Frame HasShadow="True"
+                                       BorderColor="DarkGray"
+                                       CornerRadius="10"
+                                       Margin="10,5"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="CenterAndExpand"
+                                       BackgroundColor="DarkOrange">
+                                    <StackLayout>
+                                        <FlexLayout JustifyContent="Center">
+                                            <StackLayout>
+                                                <Label Text="{Binding Name}"
+                                                       FontAttributes="Bold"
+                                                       FontSize="Large"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center" />
+                                        
+                                                <Label Text="{Binding GetPriceDescription}"
+                                                       HorizontalOptions="Center" />
+
+                                            </StackLayout>
+                                            <Image Source="{Binding ImageSource}"
+                                                   Aspect="AspectFill"
+                                                   HeightRequest="150"
+                                                   WidthRequest="150"
+                                                   HorizontalOptions="Center" />
+                                        </FlexLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                   
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,0,0,30">
+                    <Button Text="Add Burger" TextColor="White" Margin="10" Padding="40,10" 
+                            BorderColor="DarkOrange" BorderWidth="2" CornerRadius="10"
+                            Command="{Binding AddBurgerCommandButton}"/>
+                    
+                    <Button Text="Delete Burger" TextColor="White" Margin="10" Padding="30,10" 
+                            BorderColor="DarkOrange" BorderWidth="2" CornerRadius="10"
+                            Command="{Binding DeleteBurgerCommandButton}"/>
+                </StackLayout>
+                
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

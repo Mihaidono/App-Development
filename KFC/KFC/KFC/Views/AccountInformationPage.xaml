@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:KFC.ViewModels;assembly=KFC"
+             x:Class="KFC.AccountInformationPage">
+    <ContentPage.BindingContext>
+        <local:AccountInformationViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="DarkOrange">
+            
+            <Frame  BackgroundColor="DarkOrange" CornerRadius="10" Margin="10">
+                    <ImageButton Source="icon"  BackgroundColor="DarkOrange"/>
+            </Frame>
+            
+            <FlexLayout JustifyContent="Start" Margin="10">
+                <Label TextColor="Black" Text="NAME: " FontSize="Medium" VerticalTextAlignment="Center" Margin="10"/>
+                <Button FontSize="Large" TextColor="{Binding NameTextColor}" BackgroundColor="DarkOrange"
+                        Command="{Binding ChangeNameCommand }"
+                        Text="{Binding  NameString }"/>
+            </FlexLayout>
+            
+            <FlexLayout JustifyContent="Start" Margin="10">
+                <Label TextColor="Black" Text="SURNAME: " FontSize="Medium" VerticalTextAlignment="Center" Margin="10"/>
+                <Button FontSize="Large" TextColor="{Binding SurnameTextColor}" BackgroundColor="DarkOrange"
+                        Command="{Binding ChangeSurnameCommand }"
+                        Text="{Binding  SurnameString}"/>
+            </FlexLayout>
+            
+            <FlexLayout JustifyContent="Start" Margin="10">
+                <Label TextColor="Black" Text="USERNAME: " FontSize="Medium" VerticalTextAlignment="Center" Margin="10"/>
+                <Button FontSize="Large" TextColor="{Binding UsernameTextColor}" BackgroundColor="DarkOrange"
+                        Command="{Binding ChangeUsernameCommand }"
+                        Text="{Binding  UsernameString}"/>
+            </FlexLayout>
+            
+            <FlexLayout JustifyContent="Start" Margin="10">
+                <Label TextColor="Black" Text="PASSWORD: " FontSize="Medium" VerticalTextAlignment="Center" Margin="10"/>
+                <Button FontSize="Large" TextColor="{Binding PasswordTextColor}" BackgroundColor="DarkOrange"
+                        Command="{Binding ChangePasswordCommand }"
+                        Text="{Binding  PasswordString}"/>
+            </FlexLayout>
+                
+            <FlexLayout JustifyContent="Start" Margin="10">
+                <Label TextColor="Black" Text="EMAIL: " FontSize="Medium" VerticalTextAlignment="Center" Margin="10"/>
+                <Button FontSize="Large" TextColor="{Binding EmailTextColor}" BackgroundColor="DarkOrange"
+                        Command="{Binding  ChangeEmailCommand }"
+                        Text="{Binding EmailString }"/>
+            </FlexLayout>
+            
+            <Button BorderColor="Black" BorderWidth="1" Text="Save changes" IsVisible="{Binding SaveButtonVisibility}" 
+                    TextColor="White" CornerRadius="10" Command="{Binding SaveChangesButtonCommand}"
+                    VerticalOptions="EndAndExpand" Margin="10,10,10,30"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

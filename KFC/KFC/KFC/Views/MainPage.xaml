@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:KFC.ViewModels"
+             x:Class="KFC.MainPage" BackgroundColor="Black">
+
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Margin="30,100,20,30">
+        <Frame CornerRadius="5" BackgroundColor="Black" BorderColor="DarkOrange" Margin="10">
+            <Entry Text="{Binding UsernameInput}" Placeholder="Username" IsSpellCheckEnabled="False"
+                   IsTextPredictionEnabled="False" VerticalOptions="CenterAndExpand" Keyboard="Plain" BackgroundColor="Black" TextColor="White" PlaceholderColor="White" />
+        </Frame>
+        
+        <Frame CornerRadius="5" BackgroundColor="Black" BorderColor="DarkOrange" Margin="10">
+            <Entry Text="{Binding PassInput}" Placeholder="Password" IsPassword="True" IsSpellCheckEnabled="False"
+                   IsTextPredictionEnabled="False" VerticalOptions="CenterAndExpand" BackgroundColor="Black" Keyboard="Plain" TextColor="White" PlaceholderColor="White" />
+        </Frame>
+
+        <Button Text="Login" Command="{Binding LoginButtonCommand}"
+                CornerRadius="20" VerticalOptions="EndAndExpand" BackgroundColor="DarkOrange" TextColor="White"/>
+        <Button Text="Register" Command="{Binding RegisterButtonCommand}"
+                CornerRadius="20" BackgroundColor="DarkOrange" TextColor="White"/>
+
+    </StackLayout>
+
+</ContentPage>
+
+
